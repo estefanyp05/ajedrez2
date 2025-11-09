@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>𝑪𝑯𝑬𝑺𝑺</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <meta name="google-site-verification" content="Pfnw3cfFLlXk3F_qjQ7uLS4_uLAoSl-KObUI9pt8uSk" />
+</head>
+<body>
+
+    <div id="welcome-page" class="page-section">
+        <div class="welcome-content">
+            <h1>𝑩𝒊𝒆𝒏𝒗𝒆𝒏𝒊𝒅𝒐 𝒂 <span>𝑪𝑯𝑬𝑺𝑺</span></h1>
+            <p class="intro-text">
+                El ajedrez, un juego milenario de estrategia y elegancia, ha sido el telón de fondo de innumerables historias.
+                Es un reflejo de la vida misma: cada movimiento cuenta, cada pieza tiene su valor, y la victoria se construye con paciencia y visión.
+                Pero más allá de las batallas en el tablero, existe una conexión que trasciende el juego.
+            </p>
+            <p class="intro-text">
+                Esta página ha sido creada para usar la lógica con sentimientos, como un santuario digital donde el ajedrez se entrelaza con una historia aún más grandiosa: la de dos personas que piensan distinto pero sienten igual.
+                Aquí, cada partida es un reflejo de nuestra complicidad y un testimonio de un amor que, como el ajedrez,
+                nos desafía, nos enseña y nos une en cada jugada.
+            </p>
+            <button id="enter-site-button">-♔♛.</button>
+        </div>
+    </div>
+
+    <div id="main-dashboard" class="page-section hidden">
+        <header class="dashboard-header">
+            <h1 class="dashboard-title">𝓝𝓾𝓮𝓼𝓽𝓻𝓸 𝓪𝓳𝓮𝓭𝓻𝓮𝔃</h1>
+            <nav class="main-nav">
+                <button class="nav-button" data-section="user-profile"><i class="fas fa-user"></i> Usuario</button>
+                <button class="nav-button" data-section="add-partner"><i class="fas fa-heart"></i> Agregar Pareja</button>
+                <button class="nav-button" data-section="game-review"><i class="fas fa-history"></i> Revisión de Partidas</button>
+                <button class="nav-button" id="play-partner-button"><i class="fas fa-chess-knight"></i> Jugar con mi Pareja</button>
+            </nav>
+            <div class="user-status">
+                <span id="current-user-display">Invitado</span>
+                <button id="logout-button" class="hidden"><i class="fas fa-sign-out-alt"></i></button>
+            </div>
+        </header>
+
+        <main class="dashboard-content">
+            <section id="user-profile" class="dashboard-section active">
+                <h2><i class="fas fa-user-circle"></i> Mi Perfil</h2>
+                <div class="profile-card">
+                    <div class="profile-avatar">
+                        <img id="profile-pic" src="default-avatar.png" alt="Foto de perfil">
+                        <input type="file" id="upload-profile-pic" accept="image/*" class="hidden">
+                        <label for="upload-profile-pic" class="edit-pic-button"><i class="fas fa-camera"></i></label>
+                    </div>
+                    <div class="profile-info">
+                        <label for="profile-username">Nombre de Usuario:</label>
+                        <input type="text" id="profile-username" value="Tu Nombre" disabled>
+                        <button id="edit-username-button"><i class="fas fa-edit"></i> Editar</button>
+                        <button id="save-username-button" class="hidden"><i class="fas fa-save"></i> Guardar</button>
+                    </div>
+                    <p class="partner-status">Mi pareja de juego: <span id="current-partner-display">Ninguna</span></p>
+                </div>
+            </section>
+
+            <section id="add-partner" class="dashboard-section hidden">
+                <h2><i class="fas fa-user-plus"></i> Agregar Pareja de Juego</h2>
+                <div class="add-partner-form">
+                    <input type="text" id="partner-username-input" placeholder="Usuario de tu pareja" required>
+                    <button id="send-partner-request-button">Enviar Solicitud</button>
+                    <p id="partner-request-message"></p>
+                </div>
+                <div class="partner-requests">
+                    <h3>Solicitudes Pendientes:</h3>
+                    <ul id="incoming-requests-list">
+                        </ul>
+                </div>
+            </section>
+
+            <section id="game-review" class="dashboard-section hidden">
+                <h2><i class="fas fa-chess-board"></i> Revisión de Partidas</h2>
+                <div class="game-list">
+                    <h3>Partidas Jugadas con <span id="partner-for-review"></span>:</h3>
+                    <ul id="played-games-list">
+                        </ul>
+                </div>
+                <div id="game-review-details" class="hidden">
+                    <h3>Detalles de Partida #<span id="current-review-game-id"></span></h3>
+                    <div id="review-board-container"></div>
+                    <div class="review-controls">
+                        <button id="prev-move-button"><i class="fas fa-arrow-left"></i></button>
+                        <span id="current-move-info">1. e4 e5</span>
+                        <button id="next-move-button"><i class="fas fa-arrow-right"></i></button>
+                    </div>
+                    <div id="game-analysis-output">
+                        <h4>Análisis de la partida:</h4>
+                        </div>
+                </div>
+                <div class="game-statistics">
+                    <h3>Estadísticas de Pareja:</h3>
+                    <p>Partidas Ganadas por <span id="stats-user1"></span>: <span id="wins-user1">0</span></p>
+                    <p>Partidas Ganadas por <span id="stats-user2"></span>: <span id="wins-user2">0</span></p>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <div id="game-page" class="page-section hidden">
+        <header class="game-header">
+            <h2 id="game-title">Partida <span id="current-game-number">1</span></h2>
+            <h3 id="game-subtitle">💚💙</h3>
+        </header>
+
+        <div class="game-container">
+            <div class="game-options-panel">
+                <h4>Opciones de Partida:</h4>
+                <div class="time-options">
+                    <button class="time-button" data-time="30">30 min</button>
+                    <button class="time-button" data-time="15">15 min</button>
+                    <button class="time-button" data-time="5">5 min</button>
+                </div>
+                <button id="start-game-button" disabled>Iniciar Partida</button>
+            </div>
+
+            <div id="game-board-area">
+                <div id="player1-info" class="player-info">
+                    <span class="player-name" id="player1-name">Jugador 1</span>
+                    <span class="player-timer" id="player1-timer">--:--</span>
+                </div>
+                <div id="chessboard-live-container">
+                    </div>
+                <div id="player2-info" class="player-info">
+                    <span class="player-name" id="player2-name">Jugador 2</span>
+                    <span class="player-timer" id="player2-timer">--:--</span>
+                </div>
+            </div>
+
+            <div class="game-chat-panel">
+                <div id="chat-messages">
+                    </div>
+                <div class="chat-input-area">
+                    <input type="text" id="chat-text-input" placeholder="Escribe un mensaje...">
+                    <button id="send-chat-button"><i class="fas fa-paper-plane"></i></button>
+                </div>
+                <div class="communication-options">
+                    <button id="voice-chat-button"><i class="fas fa-microphone"></i> Chat de Voz</button>
+                    <button id="call-button"><i class="fas fa-phone"></i> Llamar</button>
+                </div>
+                <div id="call-status" class="hidden">Llamando...</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,619 @@
+/* style.css */
+
+:root {
+    --bg-color-dark: #2c1a1a; /* Marrón oscuro casi negro */
+    --primary-text-color: #f0f0f0;
+    --accent-color-gold: #c08040; /* Dorado para detalles */
+    --accent-color-red: #8b0000; /* Rojo oscuro para el amor/pasión */
+    --wood-texture-dark: url('wood_dark_texture.jpg'); /* Imagen de textura de madera oscura */
+    --wood-texture-light: url('wood_light_texture.jpg'); /* Imagen de textura de madera clara */
+    --heart-icon: url('heart_icon.png'); /* Pequeño icono de corazón, si lo quieres */
+    --pattern-deco: url('decorative_pattern.png'); /* Patrón decorativo para bordes */
+}
+
+/* Base */
+body {
+    margin: 0;
+    font-family: 'Georgia', serif; /* Fuente elegante */
+    background-color: var(--bg-color-dark);
+    color: var(--primary-text-color);
+    line-height: 1.6;
+    overflow-x: hidden; /* Prevenir scroll horizontal */
+}
+
+.page-section {
+    min-height: 100vh; /* Ocupar toda la altura de la pantalla */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* --- Welcome Page --- */
+#welcome-page {
+    background: var(--wood-texture-dark) center center/cover no-repeat;
+    position: relative;
+    overflow: hidden;
+}
+#welcome-page::before { /* Decoración de bordes como la imagen */
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    border: 30px solid var(--accent-color-gold);
+    box-shadow: 0 0 50px rgba(0,0,0,0.5) inset;
+    pointer-events: none;
+    background: url('border_decoration.png') repeat; /* Patrón decorativo */
+    background-size: 150px;
+}
+.welcome-content {
+    background-color: rgba(30, 15, 15, 0.85); /* Fondo semitransparente oscuro */
+    padding: 40px 60px;
+    border-radius: 15px;
+    text-align: center;
+    max-width: 800px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.7);
+    border: 2px solid var(--accent-color-gold);
+}
+#welcome-page h1 {
+    font-size: 3em;
+    color: var(--accent-color-gold);
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+#welcome-page h1 span {
+    color: var(--primary-text-color);
+}
+.intro-text {
+    font-size: 1.2em;
+    margin-bottom: 25px;
+    color: #e0d0b0;
+}
+#enter-site-button {
+    background-color: var(--accent-color-red);
+    color: white;
+    padding: 15px 30px;
+    font-size: 1.5em;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+}
+#enter-site-button:hover {
+    background-color: #a00000;
+    transform: translateY(-2px);
+}
+
+/* --- Main Dashboard --- */
+#main-dashboard {
+    background: var(--wood-texture-light) center center/cover no-repeat;
+    justify-content: flex-start; /* Alinear arriba */
+    align-items: flex-start; /* Alinear a la izquierda */
+    flex-wrap: wrap; /* Permitir que los elementos se envuelvan */
+}
+.dashboard-header {
+    width: 100%;
+    background-color: rgba(0,0,0,0.6);
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid var(--accent-color-gold);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+    position: fixed; /* Header fijo */
+    top: 0;
+    z-index: 1000;
+}
+.dashboard-title {
+    font-size: 2em;
+    color: var(--accent-color-gold);
+    margin: 0;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+}
+.main-nav .nav-button {
+    background: none;
+    border: none;
+    color: var(--primary-text-color);
+    font-size: 1.1em;
+    margin-left: 25px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+.main-nav .nav-button:hover, .main-nav .nav-button.active {
+    color: var(--accent-color-gold);
+}
+.user-status {
+    display: flex;
+    align-items: center;
+}
+#current-user-display {
+    margin-right: 15px;
+    font-size: 1.1em;
+    color: var(--primary-text-color);
+}
+#logout-button {
+    background-color: var(--accent-color-red);
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9em;
+}
+
+.dashboard-content {
+    width: 100%;
+    max-width: 1200px;
+    margin-top: 100px; /* Espacio para el header fijo */
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+}
+.dashboard-section {
+    background-color: rgba(30, 15, 15, 0.7);
+    border: 1px solid var(--accent-color-gold);
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+    width: 100%;
+    max-width: 800px;
+}
+.dashboard-section h2 {
+    color: var(--accent-color-gold);
+    font-size: 1.8em;
+    margin-bottom: 25px;
+    text-align: center;
+}
+.dashboard-section h2 i {
+    margin-right: 10px;
+}
+
+/* Perfil de Usuario */
+.profile-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+.profile-avatar {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background-color: #444;
+    overflow: hidden;
+    border: 3px solid var(--accent-color-gold);
+}
+#profile-pic {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.edit-pic-button {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background-color: var(--accent-color-red);
+    color: white;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 1.2em;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+.profile-info {
+    text-align: center;
+}
+.profile-info input[type="text"] {
+    background-color: #333;
+    border: 1px solid var(--accent-color-gold);
+    color: var(--primary-text-color);
+    padding: 8px 12px;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+.profile-info button {
+    background-color: var(--accent-color-gold);
+    color: var(--bg-color-dark);
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.partner-status {
+    font-size: 1.1em;
+    color: #e0d0b0;
+    margin-top: 15px;
+}
+.partner-status span {
+    font-weight: bold;
+    color: var(--accent-color-gold);
+}
+
+/* Agregar Pareja */
+.add-partner-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 25px;
+    gap: 10px;
+}
+.add-partner-form input {
+    flex-grow: 1;
+    max-width: 300px;
+    background-color: #333;
+    border: 1px solid var(--accent-color-gold);
+    color: var(--primary-text-color);
+    padding: 10px;
+    border-radius: 5px;
+}
+.add-partner-form button {
+    background-color: var(--accent-color-red);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+#partner-request-message {
+    text-align: center;
+    font-style: italic;
+    color: #e0d0b0;
+}
+.partner-requests h3 {
+    color: var(--accent-color-gold);
+    margin-top: 30px;
+    border-bottom: 1px solid var(--accent-color-gold);
+    padding-bottom: 10px;
+}
+#incoming-requests-list li {
+    background-color: rgba(0,0,0,0.4);
+    border: 1px solid #555;
+    padding: 10px;
+    margin-bottom: 8px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+#incoming-requests-list button {
+    background-color: #28a745; /* Verde para aceptar */
+    margin-left: 10px;
+    padding: 6px 12px;
+}
+#incoming-requests-list button.deny {
+    background-color: #dc3545; /* Rojo para rechazar */
+}
+
+/* Revisión de Partidas */
+.game-list ul {
+    list-style: none;
+    padding: 0;
+}
+.game-list li {
+    background-color: rgba(0,0,0,0.4);
+    border: 1px solid #555;
+    padding: 10px;
+    margin-bottom: 8px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #e0d0b0;
+}
+.game-list li button {
+    background-color: var(--accent-color-gold);
+    color: var(--bg-color-dark);
+    padding: 6px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+#review-board-container {
+    width: 400px; /* Tamaño del tablero de revisión */
+    height: 400px;
+    margin: 20px auto;
+    border: 5px solid var(--accent-color-gold);
+}
+.review-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-top: 15px;
+}
+.review-controls button {
+    background-color: var(--accent-color-red);
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+#current-move-info {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: var(--accent-color-gold);
+}
+#game-analysis-output h4 {
+    color: var(--accent-color-gold);
+    margin-top: 30px;
+    border-bottom: 1px solid var(--accent-color-gold);
+    padding-bottom: 10px;
+}
+
+/* Estadísticas de Pareja */
+.game-statistics {
+    margin-top: 30px;
+    text-align: center;
+}
+.game-statistics p {
+    font-size: 1.1em;
+    margin-bottom: 8px;
+    color: #e0d0b0;
+}
+.game-statistics span {
+    font-weight: bold;
+    color: var(--accent-color-gold);
+}
+
+/* --- Game Page --- */
+#game-page {
+    background: var(--wood-texture-dark) center center/cover no-repeat; /* Fondo oscuro para el juego */
+    justify-content: flex-start; /* Alinear arriba */
+    padding-top: 20px;
+    flex-direction: row; /* Diseño de columnas para el juego */
+    gap: 20px;
+    position: relative;
+    overflow: hidden;
+}
+#game-page::before { /* Decoración de bordes como la imagen */
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    border: 30px solid var(--accent-color-gold);
+    box-shadow: 0 0 50px rgba(0,0,0,0.5) inset;
+    pointer-events: none;
+    background: url('border_decoration.png') repeat; /* Patrón decorativo */
+    background-size: 150px;
+}
+.game-header {
+    position: absolute;
+    top: 20px;
+    width: 100%;
+    text-align: center;
+    color: var(--accent-color-gold);
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+    z-index: 10;
+}
+.game-header h2 {
+    font-size: 2.5em;
+    margin-bottom: 5px;
+}
+.game-header h3 {
+    font-size: 1.5em;
+    margin-top: 0;
+    color: #e0d0b0;
+}
+.game-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    margin-top: 100px; /* Espacio para el header */
+    width: 100%;
+    max-width: 1400px;
+    height: calc(100vh - 120px); /* Ajustar altura */
+}
+
+/* Panel de Opciones de Juego */
+.game-options-panel {
+    background-color: rgba(30, 15, 15, 0.7);
+    border: 1px solid var(--accent-color-gold);
+    border-radius: 10px;
+    padding: 25px;
+    text-align: center;
+    width: 200px;
+    flex-shrink: 0;
+}
+.game-options-panel h4 {
+    color: var(--accent-color-gold);
+    margin-bottom: 20px;
+}
+.time-options button {
+    background-color: #555;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 5px;
+    transition: background-color 0.3s ease;
+}
+.time-options button:hover, .time-options button.selected {
+    background-color: var(--accent-color-red);
+}
+#start-game-button {
+    background-color: var(--accent-color-gold);
+    color: var(--bg-color-dark);
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 20px;
+    font-size: 1.1em;
+}
+#start-game-button:disabled {
+    background-color: #666;
+    cursor: not-allowed;
+}
+
+/* Área del Tablero de Juego */
+#game-board-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+.player-info {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 500px; /* Ancho máximo del tablero */
+    background-color: rgba(0,0,0,0.6);
+    padding: 10px 20px;
+    border-radius: 8px;
+    color: #e0d0b0;
+    font-size: 1.1em;
+    border: 1px solid var(--accent-color-gold);
+}
+#chessboard-live-container {
+    width: 500px; /* Tamaño del tablero en vivo */
+    height: 500px;
+    border: 5px solid var(--accent-color-gold);
+    box-shadow: 0 0 25px rgba(255,165,0,0.5); /* Resplandor dorado */
+}
+/* Estilos para las piezas y casillas del tablero (gestionados por chessboard.js, pero puedes sobrescribirlos) */
+.board-black, .board-white {
+    background-color: #402020; /* Color oscuro */
+}
+.board-white {
+    background-color: #d0c0b0; /* Color claro */
+}
+/* Puedes añadir más estilos para piezas si usas imágenes personalizadas */
+
+/* Panel de Chat y Comunicación */
+.game-chat-panel {
+    background-color: rgba(30, 15, 15, 0.7);
+    border: 1px solid var(--accent-color-gold);
+    border-radius: 10px;
+    padding: 25px;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    flex-shrink: 0;
+    height: 100%; /* Ajustar altura */
+    max-height: 650px;
+}
+#chat-messages {
+    flex-grow: 1;
+    background-color: rgba(0,0,0,0.4);
+    border: 1px solid #555;
+    border-radius: 8px;
+    padding: 15px;
+    overflow-y: auto;
+    max-height: 400px; /* Altura máxima del chat */
+    color: #e0d0b0;
+}
+.chat-input-area {
+    display: flex;
+    gap: 10px;
+}
+#chat-text-input {
+    flex-grow: 1;
+    background-color: #333;
+    border: 1px solid #555;
+    color: var(--primary-text-color);
+    padding: 10px;
+    border-radius: 5px;
+}
+#send-chat-button {
+    background-color: var(--accent-color-red);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    cursor: pointer;
+}
+.communication-options {
+    display: flex;
+    justify-content: space-around;
+    gap: 10px;
+    margin-top: 10px;
+}
+.communication-options button {
+    flex-grow: 1;
+    background-color: var(--accent-color-gold);
+    color: var(--bg-color-dark);
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.communication-options button i {
+    margin-right: 8px;
+}
+#call-status {
+    text-align: center;
+    color: var(--accent-color-red);
+    font-style: italic;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    #game-page, .game-container {
+        flex-direction: column;
+    }
+    .game-container {
+        margin-top: 150px;
+    }
+    .game-options-panel, .game-chat-panel {
+        width: 80%;
+        max-width: 500px;
+        height: auto;
+        margin-bottom: 20px;
+    }
+    #game-board-area {
+        margin-top: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .dashboard-header {
+        flex-direction: column;
+        text-align: center;
+        padding: 10px;
+    }
+    .main-nav {
+        margin-top: 10px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .main-nav .nav-button {
+        margin: 5px 10px;
+    }
+    .dashboard-content {
+        margin-top: 180px;
+    }
+    #welcome-page h1 {
+        font-size: 2.2em;
+    }
+    .intro-text {
+        font-size: 1em;
+    }
+    #chessboard-live-container, #review-board-container {
+        width: 300px;
+        height: 300px;
+    }
+    .player-info {
+        width: 300px;
+    }
+    .game-options-panel, .game-chat-panel {
+        width: 90%;
+        padding: 15px;
+    }
+}
